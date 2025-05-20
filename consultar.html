@@ -39,6 +39,31 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+<script>
+  // Esta función se ejecuta cuando el DOM está completamente cargado
+  document.addEventListener("DOMContentLoaded", async () => {
+    const tabla = document.getElementById("tablaVisitantes");
+    try {
+      // Reemplaza la URL con tu endpoint real
+      const response = await fetch("http://localhost:4000/visitantes");
+      if (!response.ok) {
+        throw new Error("Error en la solicitud: " + response.status);
+      }
+      const visitantes = await response.json();
+      visitantes.forEach(visitante => {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+          <td>${visitante.nombre}</td>
+          <td>${visitante.motivo}</td>
+          <td>${visitante.hora_entrada}</td>
+        `;
+        tabla.appendChild(fila);
+      });
+    } catch (error) {
+      console.error("Error al obtener visitantes:", error);
+      tabla.innerHTML = `<tr><td colspan="3">No se pudieron cargar los visitantes.</td></tr>`;
+    }
+  });
+</script>
 </body>
 </html>

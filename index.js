@@ -49,7 +49,7 @@ app.listen(PORT, () => {
 // Endpoint para consultar visitantes
 app.get('/visitantes', async (req, res) => {
   try {
-    const [rows] = await db('SELECT * FROM usuarios');
+    const rows = await db.query('SELECT * FROM usuarios');
     res.json(rows);
   } catch (err) {
     console.error('Error al obtener visitantes:', err);
