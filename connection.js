@@ -6,7 +6,7 @@ const conexion = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: 'root',
-    database: '',
+    database: 'visitantes',
     port: 3306
 })
 
