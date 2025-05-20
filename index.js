@@ -44,3 +44,16 @@ app.get('/consultar', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
 });
+
+
+// Endpoint para consultar visitantes
+app.get('/visitantes', async (req, res) => {
+  try {
+    const [rows] = await db('SELECT * FROM usuarios');
+    res.json(rows);
+  } catch (err) {
+    console.error('Error al obtener visitantes:', err);
+    res.status(500).json({ error: 'Error al obtener visitantes' });
+  }
+});
+
