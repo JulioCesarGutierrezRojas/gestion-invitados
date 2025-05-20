@@ -13,3 +13,19 @@ const PORT = 4000;
 app.listen(PORT, () => {
     console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
 });
+
+
+// Endpoint para consultar visitantes
+app.get('/visitantes', (req, res) => {
+
+const matriz = [
+['','','','','',''],
+['','','','','',''],
+['','','','','',''],
+['','','','','',''],
+['','','','','',''],
+['','','','','','']
+
+    ];
+    })
+
